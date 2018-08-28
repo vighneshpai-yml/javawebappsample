@@ -8,11 +8,11 @@ node {
   }
   
   stage('deploy') {
-    def resourceGroup = '<myResourceGroup>'
-    def webAppName = '<myAppName>'
-    def registryServer = '<registryURL>'
+    def resourceGroup = 'myResourceGroupJenkins'
+    def webAppName = 'testhca'
+    def registryServer = 'https://hcaregistry.azurecr.io'
     def imageTag = sh script: 'git describe | tr -d "\n"', returnStdout: true
     def imageName = "$registryServer/calculator"
-    azureWebAppPublish azureCredentialsId: '<mySp>', publishType: 'docker', resourceGroup: resourceGroup, appName: webAppName, dockerImageName: imageName, dockerImageTag: imageTag, dockerRegistryEndpoint: [credentialsId: 'acr', url: "http://$registryServer"]
+    azureWebAppPublish azureCredentialsId: '4a171fc9-e85d-4bf7-b95a-425cf5a671df', publishType: 'docker', resourceGroup: resourceGroup, appName: webAppName, dockerImageName: imageName, dockerImageTag: imageTag, dockerRegistryEndpoint: [credentialsId: 'acr', url: "http://$registryServer"]
   }
 }
