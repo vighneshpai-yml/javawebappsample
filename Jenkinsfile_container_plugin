@@ -4,6 +4,7 @@ node ('Mac_Mini') {
   }
   
   stage('build') {
+    sh 'whoami'
     sh 'mvn clean package'
   }
   
