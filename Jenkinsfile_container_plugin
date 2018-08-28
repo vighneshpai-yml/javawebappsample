@@ -1,4 +1,4 @@
-node {
+node ('Mac_Mini') {
   stage('init') {
     checkout scm
   }
@@ -13,6 +13,6 @@ node {
     def registryServer = 'https://hcaregistry.azurecr.io'
     def imageTag = sh script: 'git describe | tr -d "\n"', returnStdout: true
     def imageName = "$registryServer/calculator"
-    azureWebAppPublish azureCredentialsId: '4a171fc9-e85d-4bf7-b95a-425cf5a671df', publishType: 'docker', resourceGroup: resourceGroup, appName: webAppName, dockerImageName: imageName, dockerImageTag: imageTag, dockerRegistryEndpoint: [credentialsId: 'acr', url: "http://$registryServer"]
+    azureWebAppPublish azureCredentialsId: '562c8f68-98ab-47cf-8ae8-e06570972c10', publishType: 'docker', resourceGroup: resourceGroup, appName: webAppName, dockerImageName: imageName, dockerImageTag: imageTag, dockerRegistryEndpoint: [credentialsId: 'acr', url: "http://$registryServer"]
   }
 }
